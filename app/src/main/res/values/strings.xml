@@ -4,4 +4,9 @@
     <string name="password">رمز عبور</string>
     <string name="login">ورود</string>
     <string name="want_to_register">می خواهم عضو شوم</string>
+    <string name="register_in_app">عضویت در برنامه</string>
+    <string name="email_address">آدرس ایمیل</string>
+    <string name="repeat_password">تکرار رمز عبور</string>
+    <string name="register">عضویت</string>
+    <string name="already_have_account">قبلا ثبت نام کرده اید؟</string>
 </resources>
