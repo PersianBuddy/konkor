@@ -9,4 +9,15 @@
     <string name="repeat_password">تکرار رمز عبور</string>
     <string name="register">عضویت</string>
     <string name="already_have_account">قبلا ثبت نام کرده اید؟</string>
+    <string name="user_name_or_email">ایمیل یا نام کاربری</string>
+    <string name="empty_user_name_email_error">لطفا نام کاربری یا ایمیل خود را وارد کنید</string>
+    <string name="error_empty_password">لطفا رمز عبور را وارد کنید</string>
+    <string name="not_a_member">عضو نیستید؟</string>
+    <string name="sign_up">ثبت نام</string>
+    <string name="user_name">نام کاربری</string>
+    <string name="error_empty_user_name">لطفا نام کاربری خود را وارد کنید</string>
+    <string name="error_empty_email_field">لطفا ایمیل خود را وارد کنید</string>
+    <string name="error_empty_password_repeat">لطفا تکرار رمز عبور را وارد کنید</string>
+    <string name="error_password_mismatch">رمز عبور و تکرار آن تطابق ندارند</string>
+    <string name="user_login">ورود اعضا</string>
 </resources>

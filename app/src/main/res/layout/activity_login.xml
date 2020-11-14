@@ -4,37 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".activity.LoginActivity"
+    >
 
     <ImageView
         android:id="@+id/img_app_icon"
         android:layout_width="200dp"
         android:layout_height="200dp"
+        android:src="@drawable/sample_logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17"
-        android:src="@drawable/sample_logo" />
+        app:layout_constraintVertical_bias="0.13" />
 
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/txt_field_phone_number"
-        android:layout_width="250dp"
+    <TextView
+        android:id="@+id/txt_page_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="@string/phone_number"
-        app:errorEnabled="true"
-        android:layoutDirection="rtl"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="8dp"
+        android:text="@string/user_login"
+        android:textColor="@color/black"
+        android:textSize="25sp"
         app:layout_constraintEnd_toEndOf="@+id/img_app_icon"
         app:layout_constraintStart_toStartOf="@+id/img_app_icon"
-        app:layout_constraintTop_toBottomOf="@+id/img_app_icon" >
+        app:layout_constraintTop_toBottomOf="@+id/img_app_icon" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_field_user_name_email"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/user_name_or_email"
+        android:layoutDirection="rtl"
+        app:layout_constraintEnd_toEndOf="@+id/txt_page_title"
+        app:layout_constraintStart_toStartOf="@+id/txt_page_title"
+        app:layout_constraintTop_toBottomOf="@+id/txt_page_title">
+
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"/>
+            android:inputType="text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,12 +57,11 @@
         android:ems="10"
         android:hint="@string/password"
         app:endIconMode="password_toggle"
-        app:errorEnabled="true"
         android:layoutDirection="rtl"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        app:layout_constraintEnd_toEndOf="@+id/txt_field_phone_number"
-        app:layout_constraintStart_toStartOf="@+id/txt_field_phone_number"
-        app:layout_constraintTop_toBottomOf="@+id/txt_field_phone_number" >
+        app:layout_constraintEnd_toEndOf="@+id/txt_field_user_name_email"
+        app:layout_constraintStart_toStartOf="@+id/txt_field_user_name_email"
+        app:layout_constraintTop_toBottomOf="@+id/txt_field_user_name_email" >
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +71,7 @@
     <Button
         android:id="@+id/btn_login"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
+        android:layout_height="55dp"
         android:layout_marginTop="16dp"
         android:text="@string/login"
         android:textSize="20sp"
@@ -68,16 +79,29 @@
         app:layout_constraintStart_toStartOf="@+id/txt_field_password"
         app:layout_constraintTop_toBottomOf="@+id/txt_field_password" />
 
-    <TextView
-        android:id="@+id/txt_register"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:text="@string/want_to_register"
         app:layout_constraintEnd_toEndOf="@+id/btn_login"
         app:layout_constraintStart_toStartOf="@+id/btn_login"
-        app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        android:textColor="#03A9F4"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_login">
+
+        <TextView
+            android:id="@+id/txt_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up"
+            android:textColor="#03A9F4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="@string/not_a_member"
+            android:textColor="#121111" />
+    </LinearLayout>
+
 
 
 
