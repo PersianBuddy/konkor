@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.PatternMatcher;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,6 +17,8 @@ import com.example.konkor.R;
 import com.example.konkor.helper.UserDbHelper;
 import com.example.konkor.models.User;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout txtLayoutUserName, txtLayoutEmail, txtLayoutPass, txtLayoutRepeatPass;
@@ -68,13 +72,21 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length()>0){
-                    txtLayoutUserName.setErrorEnabled(false);
+                    Pattern containSpace = Pattern.compile(".*\\s.*");
+                    if (s.length()<4){
+                        txtLayoutUserName.setErrorEnabled(true);
+                        txtLayoutUserName.setError(getString(R.string.error_user_name_length));
+                    }else if(containSpace.matcher(s).matches()){
+                        txtLayoutUserName.setErrorEnabled(true);
+                        txtLayoutUserName.setError(getString(R.string.error_user_name_contain_space));
+                    }else {
+                        txtLayoutUserName.setErrorEnabled(false);
+                    }
                 }
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
             }
         });
         txtLayoutEmail.getEditText().addTextChangedListener(new TextWatcher() {
@@ -104,7 +116,26 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (s.length()>0){
-                    txtLayoutPass.setErrorEnabled(false);
+                    if (s.length()<8){
+                        txtLayoutPass.setErrorEnabled(true);
+                        txtLayoutPass.setError(getString(R.string.error_password_length));
+                    }else {
+                        Pattern containUpperCase = Pattern.compile(".*[A-Z].*");
+                        Pattern containLetters = Pattern.compile(".*[a-zA-Z].*");
+                        Pattern containNumbers = Pattern.compile(".*\\d.*");
+                        if (!containLetters.matcher(s).matches()){
+                            txtLayoutPass.setErrorEnabled(true);
+                            txtLayoutPass.setError(getString(R.string.error_password_should_contain_word_and_number));
+                        }else if (!containUpperCase.matcher(s).matches()){
+                            txtLayoutPass.setErrorEnabled(true);
+                            txtLayoutPass.setError(getString(R.string.error_password_no_upper_case));
+                        }else if (!containNumbers.matcher(s).matches()){
+                            txtLayoutPass.setErrorEnabled(true);
+                            txtLayoutPass.setError(getString(R.string.error_password_should_contain_word_and_number));
+                        }else {
+                            txtLayoutPass.setErrorEnabled(false);
+                        }
+                    }
                 }
             }
 
@@ -136,20 +167,61 @@ public class RegisterActivity extends AppCompatActivity {
 
 
     private Boolean validateInput() {
-        if (txtLayoutEmail.getEditText().getText().toString().equals("")){
+        String email =txtLayoutEmail.getEditText().getText().toString().trim();
+        String password = txtLayoutPass.getEditText().getText().toString();
+        String userName = txtLayoutUserName.getEditText().getText().toString();
+        if (email.equals("")){
             txtLayoutEmail.setErrorEnabled(true);
             txtLayoutEmail.setError(getString(R.string.error_empty_email_field));
             return false;
-        }else if (txtLayoutUserName.getEditText().getText().toString().equals("")){
-
+        }else{
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                txtLayoutEmail.setErrorEnabled(true);
+                txtLayoutEmail.setError(getString(R.string.unvalide_email));
+                return false;
+            }
+        }
+        if (userName.equals("")){
             txtLayoutUserName.setErrorEnabled(true);
             txtLayoutUserName.setError(getString(R.string.error_empty_user_name));
             return false;
-        }else if (txtLayoutPass.getEditText().getText().toString().equals("")){
+        }else {
+            Pattern containSpace = Pattern.compile(".*\\s.*");
+            if (containSpace.matcher(userName).matches()){
+                txtLayoutUserName.setErrorEnabled(true);
+                txtLayoutUserName.setError(getString(R.string.error_user_name_contain_space));
+                return false;
+            }
+        }
+        if (password.equals("")){
             txtLayoutPass.setErrorEnabled(true);
             txtLayoutPass.setError(getString(R.string.error_empty_password));
             return false;
-        }else if (txtLayoutRepeatPass.getEditText().getText().toString().equals("")){
+        }else {
+            if (password.length()<8){
+                txtLayoutPass.setErrorEnabled(true);
+                txtLayoutPass.setError(getString(R.string.error_password_length));
+                return false;
+            }else {
+                Pattern containUpperCase = Pattern.compile(".*[A-Z].*");
+                Pattern containLetters = Pattern.compile(".*[a-zA-Z].*");
+                Pattern containNumbers = Pattern.compile(".*\\d.*");
+                if (!containLetters.matcher(password).matches()){
+                    txtLayoutPass.setErrorEnabled(true);
+                    txtLayoutPass.setError(getString(R.string.error_password_should_contain_word_and_number));
+                    return false;
+                }else if (!containUpperCase.matcher(password).matches()){
+                    txtLayoutPass.setErrorEnabled(true);
+                    txtLayoutPass.setError(getString(R.string.error_password_no_upper_case));
+                    return false;
+                }else if (!containNumbers.matcher(password).matches()){
+                    txtLayoutPass.setErrorEnabled(true);
+                    txtLayoutPass.setError(getString(R.string.error_password_should_contain_word_and_number));
+                    return false;
+                }
+            }
+        }
+        if (txtLayoutRepeatPass.getEditText().getText().toString().equals("")){
             txtLayoutRepeatPass.setErrorEnabled(true);
             txtLayoutRepeatPass.setError(getString(R.string.error_empty_password_repeat));
             return false;

@@ -20,4 +20,11 @@
     <string name="error_empty_password_repeat">لطفا تکرار رمز عبور را وارد کنید</string>
     <string name="error_password_mismatch">رمز عبور و تکرار آن تطابق ندارند</string>
     <string name="user_login">ورود اعضا</string>
+    <string name="unvalide_email">فرمت ایمیل وارد شده درست نمی‌باشد</string>
+    <string name="error_email_max_length">ایمیل نمی تواند بیشتر از 128 کاراکتر باشد</string>
+    <string name="error_user_name_length">نام کاربری باید حداقل 4 کاراکتر باشد</string>
+    <string name="error_user_name_contain_space">نام کاربری باید بدون فاصله باشد</string>
+    <string name="error_password_length">رمز عبور باید شامل حداقل 8 کاراکتر باشد</string>
+    <string name="error_password_should_contain_word_and_number">رمز عبور باید ترکیبی از حروف و اعداد انگلیسی باشد</string>
+    <string name="error_password_no_upper_case">رمز عبور باید شامل حروف بزرگ باشد</string>
 </resources>
