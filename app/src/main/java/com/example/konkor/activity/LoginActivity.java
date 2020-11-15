@@ -9,10 +9,12 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.konkor.MainActivity;
 import com.example.konkor.R;
 import com.example.konkor.helper.SessionManager;
+import com.example.konkor.helper.UserDbHelper;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends AppCompatActivity {
@@ -20,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     SessionManager sessionManager;
     TextView txtRegister;
+    UserDbHelper dbHelper;
 
 
     @Override
@@ -31,11 +34,20 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txt_field_password);
         btnLogin = findViewById(R.id.btn_login);
         txtRegister =findViewById(R.id.txt_register);
+        dbHelper = new UserDbHelper(getApplicationContext());
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateInput();
+                if (validateInput()){
+                    String tmp_email = txtUserNameOrEmail.getEditText().getText().toString();
+                    String tmp_pass = txtPassword.getEditText().getText().toString();
+                    if (dbHelper.getUserByEmail(tmp_email, tmp_pass) != null){
+                        Toast.makeText(LoginActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(LoginActivity.this, "Unable to login", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 

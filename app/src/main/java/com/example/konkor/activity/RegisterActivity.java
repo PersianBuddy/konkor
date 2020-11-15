@@ -9,14 +9,18 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.konkor.R;
+import com.example.konkor.helper.UserDbHelper;
+import com.example.konkor.models.User;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegisterActivity extends AppCompatActivity {
     private TextInputLayout txtLayoutUserName, txtLayoutEmail, txtLayoutPass, txtLayoutRepeatPass;
     private Button btnRegister;
     private TextView txtLogin;
+    UserDbHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +32,21 @@ public class RegisterActivity extends AppCompatActivity {
         txtLayoutRepeatPass = findViewById(R.id.txt_field_repeat_pass);
         txtLogin =findViewById(R.id.txt_login);
         btnRegister = findViewById(R.id.btn_register);
+        dbHelper = new UserDbHelper(getApplicationContext());
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                validateInput();
+                if (validateInput()){
+                    String email = txtLayoutEmail.getEditText().getText().toString();
+                    String userName = txtLayoutUserName.getEditText().getText().toString();
+                    String password = txtLayoutPass.getEditText().getText().toString();
+                    
+                    User user = new User(email, userName, password);
+                    if(dbHelper.insertUser(user)) {
+                        Toast.makeText(RegisterActivity.this, "User Added to database", Toast.LENGTH_SHORT).show();
+                    }
+                }
             }
         });
 
