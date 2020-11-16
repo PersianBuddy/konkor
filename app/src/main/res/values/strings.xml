@@ -30,4 +30,36 @@
     <string name="start_quiz">شروع آزمون</string>
     <string name="exit">خروج</string>
     <string name="okay">باشه</string>
+    <string-array name="question_numbers">
+        <item>۱</item>
+        <item>۲</item>
+        <item>۳</item>
+        <item>۴</item>
+        <item>۵</item>
+        <item>۶</item>
+        <item>۷</item>
+        <item>۸</item>
+        <item>۹</item>
+        <item>۱۰</item>
+        <item>۱۱</item>
+        <item>۱۲</item>
+        <item>۱۳</item>
+        <item>۱۴</item>
+        <item>۱۵</item>
+        <item>۱۶</item>
+        <item>۱۷</item>
+        <item>۱۸</item>
+        <item>۱۹</item>
+        <item>۲۰</item>
+        <item>۲۱</item>
+        <item>۲۲</item>
+        <item>۲۳</item>
+        <item>۲۴</item>
+        <item>۲۵</item>
+        <item>۲۶</item>
+        <item>۲۷</item>
+        <item>۲۸</item>
+        <item>۲۹</item>
+        <item>۳۰</item>
+     </string-array>
 </resources>
