@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -15,7 +16,11 @@ import com.example.konkor.MainActivity;
 import com.example.konkor.R;
 import com.example.konkor.helper.SessionManager;
 import com.example.konkor.helper.UserDbHelper;
+import com.example.konkor.models.User;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
     TextInputLayout txtUserNameOrEmail, txtPassword;
@@ -34,19 +39,48 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.txt_field_password);
         btnLogin = findViewById(R.id.btn_login);
         txtRegister =findViewById(R.id.txt_register);
+        sessionManager = new SessionManager(getApplicationContext());
         dbHelper = new UserDbHelper(getApplicationContext());
+
+        autoFill();
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (validateInput()){
-                    String tmp_email = txtUserNameOrEmail.getEditText().getText().toString();
+                    String tmp_userNameOrEmail = txtUserNameOrEmail.getEditText().getText().toString().trim();
                     String tmp_pass = txtPassword.getEditText().getText().toString();
-                    if (dbHelper.getUserByEmail(tmp_email, tmp_pass) != null){
-                        Toast.makeText(LoginActivity.this, "Successfull", Toast.LENGTH_SHORT).show();
+                    if (Patterns.EMAIL_ADDRESS.matcher(tmp_userNameOrEmail).matches()){
+                        User tmpUser = dbHelper.getUserByEmail(tmp_userNameOrEmail, tmp_pass);
+                        if ( tmpUser!= null){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            sessionManager.saveData(tmpUser);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }else {
+                            new MaterialAlertDialogBuilder(LoginActivity.this)
+                                    .setTitle("خطا")
+                                    .setMessage("آدرس ایمیل یا رمز عبور اشتباه می باشد")
+                                    .setPositiveButton(R.string.okay, null)
+                                    .show();
+
+                        }
                     }else {
-                        Toast.makeText(LoginActivity.this, "Unable to login", Toast.LENGTH_SHORT).show();
+                        User tmpUser = dbHelper.getUserByUserName(tmp_userNameOrEmail, tmp_pass);
+                        if (tmpUser != null){
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            sessionManager.saveData(tmpUser);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        }else {
+                            new MaterialAlertDialogBuilder(LoginActivity.this)
+                                    .setTitle("خطا")
+                                    .setMessage("نام کاربری یا رمز عبور اشتباه می باشد")
+                                    .setPositiveButton(R.string.okay, null)
+                                    .show();
+                        }
                     }
+
                 }
             }
         });
@@ -98,6 +132,8 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -121,5 +157,15 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    private void autoFill() {
+        Intent intent = getIntent();
+        if (intent != null){
+            String userName = intent.getStringExtra("user_name");
+            if (userName!= null){
+                txtUserNameOrEmail.getEditText().setText(userName);
+            }
+        }
     }
 }

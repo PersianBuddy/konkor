@@ -48,7 +48,9 @@ public class RegisterActivity extends AppCompatActivity {
                     
                     User user = new User(email, userName, password);
                     if(dbHelper.insertUser(user)) {
-                        Toast.makeText(RegisterActivity.this, "User Added to database", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                        intent.putExtra("user_name",user.getUserName());
+                        startActivity(intent);
                     }
                 }
             }
