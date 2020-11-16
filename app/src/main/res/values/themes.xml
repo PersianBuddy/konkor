@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Konkor" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <!--        Default direction-->
+        <item name="android:layoutDirection">rtl</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -16,6 +18,8 @@
 
     <!-- No Task bar Theme. -->
     <style name="Theme.NoActionbar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!--        Default direction-->
+        <item name="android:layoutDirection">rtl</item>
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
