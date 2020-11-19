@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">konkor</string>
+    <string name="app_name">آزمون</string>
     <string name="phone_number">شماره موبایل</string>
     <string name="password">رمز عبور</string>
     <string name="login">ورود</string>
@@ -30,6 +30,8 @@
     <string name="start_quiz">شروع آزمون</string>
     <string name="exit">خروج</string>
     <string name="okay">باشه</string>
+    <string name="next_question">سوال بعدی</string>
+    <string name="finish_quiz">اتمام آزمون</string>
     <string-array name="question_numbers">
         <item>۱</item>
         <item>۲</item>
