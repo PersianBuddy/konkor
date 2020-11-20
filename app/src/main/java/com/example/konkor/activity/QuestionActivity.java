@@ -72,7 +72,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (rbSelectedAnswer != null){
 
-                    rbSelectedAnswer.setBackground(getResources().getDrawable(R.drawable.custom_border));
+                    rbSelectedAnswer.setBackground(getResources().getDrawable(R.drawable.solid_round_white_rectangle));
                     rbSelectedAnswer.setTextColor(getResources().getColor(R.color.black));
                 }
 

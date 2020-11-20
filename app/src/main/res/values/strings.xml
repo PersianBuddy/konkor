@@ -32,6 +32,11 @@
     <string name="okay">باشه</string>
     <string name="next_question">سوال بعدی</string>
     <string name="finish_quiz">اتمام آزمون</string>
+    <string name="question_activity_page_title">درس مورد نظر</string>
+    <string name="question_activity_page_subtitle">رشته مورد نظر</string>
+    <string name="content_description_favorite">محبوب ترین</string>
+    <string name="content_description_search">جستجو</string>
+    <string name="content_description_more">موارد بیشتر</string>
     <string-array name="question_numbers">
         <item>۱</item>
         <item>۲</item>
