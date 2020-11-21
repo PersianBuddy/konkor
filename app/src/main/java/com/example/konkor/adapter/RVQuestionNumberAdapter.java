@@ -1,4 +1,4 @@
-package com.example.konkor.helper;
+package com.example.konkor.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,9 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.konkor.R;
-import com.example.konkor.activity.QuestionActivity;
-
-import java.util.ArrayList;
 
 public class RVQuestionNumberAdapter extends RecyclerView.Adapter<RVQuestionNumberAdapter.ViewHolder> {
     private Context mContext;

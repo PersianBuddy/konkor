@@ -12,7 +12,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.example.konkor.R;
-import com.example.konkor.helper.RVQuestionNumberAdapter;
+import com.example.konkor.adapter.RVQuestionNumberAdapter;
 
 public class QuestionActivity extends AppCompatActivity {
     private RVQuestionNumberAdapter adapter;

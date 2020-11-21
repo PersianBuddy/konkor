@@ -37,6 +37,7 @@
     <string name="content_description_favorite">محبوب ترین</string>
     <string name="content_description_search">جستجو</string>
     <string name="content_description_more">موارد بیشتر</string>
+    <string name="dummy_question">این یک نمونه سوال برای آزمایش می باشد و هیچ گونه ارزش دیگری ندارد با تشکر؟</string>
     <string-array name="question_numbers">
         <item>۱</item>
         <item>۲</item>
