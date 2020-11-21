@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.QuizResultActivity">
+
+    <ProgressBar
+        android:id="@+id/pb_quiz_result"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="130dp"
+        android:scaleX="4"
+        android:scaleY="4"
+        android:indeterminateOnly="false"
+        android:progressDrawable="@drawable/determinate_progress_bar"
+        android:max="100"
+        android:progress="19"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_quiz_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="۱۹/۲۰"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/pb_quiz_result"
+        app:layout_constraintEnd_toEndOf="@+id/pb_quiz_result"
+        app:layout_constraintStart_toStartOf="@+id/pb_quiz_result"
+        app:layout_constraintTop_toTopOf="@+id/pb_quiz_result" />
+
+    <TextView
+        android:id="@+id/txt_result_message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="خیلی عالی بود!"
+        android:layout_marginTop="20dp"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/pb_quiz_result"
+        app:layout_constraintEnd_toEndOf="@+id/pb_quiz_result"
+        app:layout_constraintStart_toStartOf="@+id/pb_quiz_result"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_answer_counter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_result_message"
+            android:padding="30dp"
+            android:layout_margin="10dp"
+            android:background="@drawable/gradient_round_background">
+            <TextView
+                android:id="@+id/txt_correct_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:text="صحیح" />
+
+            <TextView
+                android:id="@+id/txt_correct_answer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="۱۴"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/txt_correct_answer"
+                app:layout_constraintStart_toStartOf="@+id/txt_correct_answer"
+                app:layout_constraintTop_toBottomOf="@+id/txt_correct_answer" />
+            <TextView
+                android:id="@+id/txt_wrong_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="اشتباه" />
+
+            <TextView
+                android:id="@+id/txt_wrong_answer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="۱۴"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/red"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/txt_wrong_answer"
+                app:layout_constraintStart_toStartOf="@+id/txt_wrong_answer"
+                app:layout_constraintTop_toBottomOf="@+id/txt_wrong_answer" />
+
+            <TextView
+                android:id="@+id/txt_skipped_answer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="جواب نداده" />
+
+            <TextView
+                android:id="@+id/txt_skipped_answer_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="۱۴"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@color/orange"
+                android:layout_marginTop="10dp"
+                app:layout_constraintEnd_toEndOf="@+id/txt_skipped_answer"
+                app:layout_constraintStart_toStartOf="@+id/txt_skipped_answer"
+                app:layout_constraintTop_toBottomOf="@+id/txt_skipped_answer" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/btn_show_answers"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_go_home"
+        android:text="مشاهده جواب‌ها"/>
+    <Button
+        android:id="@+id/btn_go_home"
+        android:layout_width="150dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/btn_show_answers"
+        app:layout_constraintEnd_toEndOf="@id/btn_show_answers"
+        app:layout_constraintBottom_toBottomOf="parent"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="صفحه اصلی"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

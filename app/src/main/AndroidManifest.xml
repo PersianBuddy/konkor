@@ -9,8 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Konkor">
-        <activity android:name=".activity.QuestionActivity"
+        <activity android:name=".activity.QuizResultActivity"
             android:theme="@style/Theme.NoActionbar"></activity>
+        <activity
+            android:name=".activity.QuestionActivity"
+            android:theme="@style/Theme.NoActionbar" />
         <activity android:name=".activity.QuizActivity" />
         <activity
             android:name=".activity.RegisterActivity"
