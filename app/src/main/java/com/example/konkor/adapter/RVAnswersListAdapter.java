@@ -1,6 +1,7 @@
 package com.example.konkor.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.konkor.R;
+import com.example.konkor.activity.SingleAnswerActivity;
 import com.example.konkor.models.Question;
 
 import java.util.ArrayList;
@@ -80,7 +82,8 @@ public class RVAnswersListAdapter extends RecyclerView.Adapter <RVAnswersListAda
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(mContext, String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(mContext, SingleAnswerActivity.class);
+            mContext.startActivity(intent);
         }
     }
 }
