@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:layout_marginBottom="15dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/rectangle_border"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/img_book_image"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/sample_book"/>
+        <RelativeLayout
+            android:id="@+id/layout_book_detail"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/img_book_image"
+            app:layout_constraintTop_toBottomOf="@id/img_book_image"
+            android:padding="5dp">
+            <TextView
+                android:id="@+id/txt_book_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="عنوان کتاب"/>
+            <RelativeLayout
+                android:id="@+id/layout_book_expandable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:layout_below="@id/txt_book_title"
+                android:visibility="gone">
+                <TextView
+                    android:id="@+id/txt_book_author_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="نویسنده:"
+                    android:layout_alignParentTop="true"/>
+                <TextView
+                    android:id="@+id/txt_book_author_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="دکتر محستنی"
+                    android:layout_alignParentTop="true"/>
+                <TextView
+                    android:id="@+id/txt_book_credit_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="واحد درسی"
+                    android:layout_below="@id/txt_book_author_title"/>
+                <TextView
+                    android:id="@+id/txt_book_credit_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="۳"
+                    android:layout_below="@id/txt_book_author_value"/>
+                <TextView
+                    android:id="@+id/txt_quiz_average_result_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="میانگین نمره"
+                    android:layout_below="@id/txt_book_credit_title"/>
+                <TextView
+                    android:id="@+id/txt_quiz_average_result_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:text="۲۰"
+                    android:layout_below="@id/txt_book_credit_value"/>
+            </RelativeLayout>
+
+            <ImageButton
+                android:id="@+id/img_switch_detail"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_30"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/layout_book_expandable"/>
+
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>

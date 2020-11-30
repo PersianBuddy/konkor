@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.QuestionActivity"
-    android:background="#CEF4F0F0">
+    android:background="#60F6F1F1">
 
     <include
         android:id="@+id/top_bar"
         layout="@layout/top_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="?actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/pb_answered"/>
+        app:layout_constraintRight_toRightOf="parent"/>
 <!--    <View-->
 <!--        android:id="@+id/top_bar_divider"-->
 <!--        android:layout_marginTop="5dp"-->
@@ -26,12 +27,12 @@
     <ProgressBar
         android:id="@+id/pb_answered"
         android:layout_width="match_parent"
+        android:padding="0dp"
         android:layout_height="4dp"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
         app:layout_constraintTop_toBottomOf="@id/top_bar"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/question_number_list"
         android:progress="30"
         android:max="100"/>
 
@@ -43,43 +44,27 @@
         android:padding="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pb_answered"
-        app:layout_constraintBottom_toTopOf="@id/question_layout">
+        app:layout_constraintTop_toBottomOf="@id/pb_answered">
 
     </androidx.recyclerview.widget.RecyclerView>
 
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/question_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="200dp"
-
-        app:layout_constraintEnd_toEndOf="@+id/question_number_list"
-        app:layout_constraintStart_toStartOf="@+id/question_number_list"
-        app:layout_constraintTop_toBottomOf="@id/question_number_list"
-        app:layout_constraintBottom_toTopOf="@id/answer_options_layout"
->
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/txt_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="170dp"
             android:gravity="center"
             android:text="این یک نمونه سوال می باشد این یک نمونه سوال می باشد این یک نمونه سوال می باشد؟"
             android:textSize="22sp"
-            android:background="@drawable/solid_white_rectangle"
-            android:paddingTop="40dp"
-            android:paddingBottom="40dp"
+            android:background="@drawable/solid_round_white_rectangle"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintEnd_toEndOf="@+id/question_number_list"
+            app:layout_constraintStart_toStartOf="@+id/question_number_list"
+            app:layout_constraintTop_toBottomOf="@id/question_number_list"
+            app:layout_constraintBottom_toTopOf="@id/answer_options_layout" />
 
 
     <LinearLayout
@@ -90,7 +75,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/question_layout"
+        app:layout_constraintTop_toBottomOf="@id/txt_question"
         app:layout_constraintBottom_toTopOf="@id/buttonPanel">
 
         <RadioGroup
